@@ -4,10 +4,10 @@ const{HomePage}=require('../pages/homepage')
 
 require('dotenv').config();
 
-test('Naukri Login Test', async ({ page }) => {
+test('Naukri Jobsearch Test', async ({ page }) => {
 
     const loginPage = new LoginPage(page);
-
+    const homepage=new HomePage(page);
 
     await loginPage.goto();
 
@@ -20,5 +20,6 @@ test('Naukri Login Test', async ({ page }) => {
 
     await expect(page).toHaveURL(/naukri/);
 
-    
+    await homepage.searchJob();
+    //await page.pause();
 });
