@@ -16,10 +16,11 @@ test('Naukri Jobsearch Test', async ({ page }) => {
         process.env.PASSWORD
     );
 
-    await page.waitForTimeout(5000);
+    //await page.waitForTimeout(5000);
 
     await expect(page).toHaveURL(/naukri/);
+    
 
-    await homepage.searchJob();
+    await homepage.searchJob("SDET","Begaluru")
     //await page.pause();
 });
