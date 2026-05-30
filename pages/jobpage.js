@@ -19,7 +19,7 @@ class JobPage {
         .locator(this.title)
         .allTextContents();
 
-    console.log(titles);
+    //console.log(titles);
 
     return titles;
 }
@@ -29,7 +29,7 @@ await this.page.waitForSelector(this.companyName);
         .locator(this.companyName)
         .allTextContents();
 
-    console.log(companyName);
+    //console.log(companyName);
 
     return companyName;
 
@@ -41,7 +41,7 @@ await this.page.waitForSelector(this.experience);
         .locator(this.experience)
         .allTextContents();
 
-    console.log(experiencee);
+    //console.log(experiencee);
 
     return experiencee;
 
@@ -53,11 +53,16 @@ await this.page.waitForSelector(this.location);
         .locator(this.location)
         .allTextContents();
 
-    console.log(location);
+    //console.log(location);
 
     return location;
 
     
+}
+async jobCreation(jobs){
+    
+
+
 }
 }
 module.exports={JobPage};
