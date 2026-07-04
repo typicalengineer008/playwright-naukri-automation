@@ -1,58 +1,28 @@
-const { test, expect } = require('@playwright/test');
-const { LoginPage } = require('../pages/login');
-const{HomePage}=require('../pages/homepage');
-const{JobPage}=require('../pages/jobpage');
+
 const { writeJobsToCSV } = require('../utils/csvWriter');
-
 require('dotenv').config();
+import { test, expect } from '../fixtures/baseFixture';
 
-test('Naukri Jobsearch Test', async ({ page }) => {
-
-    const loginPage = new LoginPage(page);
-    const homepage=new HomePage(page);
-    const jobpage=new JobPage(page);
-    //const csv=new writeJobsToCSV()
+test('Search Job', async ({ loginPage, homePage, jobPage, page }) => {
 
     await loginPage.goto();
-
-    await loginPage.login(
-        process.env.EMAIL,
-        process.env.PASSWORD
-    );
-
-    //await page.waitForTimeout(5000);
-
+    //login into naukri
+    await loginPage.login(process.env.EMAIL,
+        process.env.PASSWORD);
+        
     await expect(page).toHaveURL(/naukri/);
-    
+    //search for job criteria
+    await homePage.searchJob("SDET","Bengaluru");
+   
+   // Fetch data
+    const jobs =await jobPage.fetchJobs();
+expect(jobs.length).toBeGreaterThan(0);
 
-    await homepage.searchJob("SDET","Begaluru")
-    //await page.pause();
-    await expect(page).toHaveURL(/job/);
-const jobsTitle= await jobpage.getJobTitles();
-    const companyName=await jobpage.getCompanyname();
-    const experience=await jobpage.getExperience();
-    const location=await jobpage.getLocation();
-    const count = Math.min(
-    jobsTitle.length,
-    companyName.length,
-    experience.length,
-    location.length
-);
-
-  const jobs = [];
-   for (let i = 0; i < count; i++) {
-
-    jobs.push({
-        title: jobsTitle[i],
-        company: companyName[i],
-        experience: experience[i],
-        location: location[i]
-    });
-}
-
-//console.log(jobs);
 await writeJobsToCSV(jobs);
 
-}
+console.table(jobs.slice(0, 5));
 
-);
+console.log(`Successfully wrote ${jobs.length} jobs to CSV`);
+
+});
+

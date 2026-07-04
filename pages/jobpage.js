@@ -59,10 +59,38 @@ await this.page.waitForSelector(this.location);
 
     
 }
+async fetchJobs() {
+
+    const titles = await this.getJobTitles();
+    const companies = await this.getCompanyname();
+    const experiences = await this.getExperience();
+    const locations = await this.getLocation();
+
+    const count = Math.min(
+        titles.length,
+        companies.length,
+        experiences.length,
+        locations.length
+    );
+
+    const jobs = [];
+
+    for (let i = 0; i < count; i++) {
+        jobs.push({
+            title: titles[i],
+            company: companies[i],
+            experience: experiences[i],
+            location: locations[i]
+        });
+    }
+
+    return jobs;
+}
 async jobCreation(jobs){
     
 
 
 }
 }
-module.exports={JobPage};
+//module.exports={JobPage};
+export default JobPage;

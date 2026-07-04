@@ -13,7 +13,7 @@ class HomePage {
             'input[placeholder="Select experience"]';
 
         this.yearOfExperience =
-            '//span[text()="3 years"]';
+           '//span[text()="3 years"]';
 
         this.location =
             'input[placeholder="Enter location"]';
@@ -43,5 +43,5 @@ class HomePage {
         await this.page.click(this.searchicon);
     }
 }
-
-module.exports = { HomePage };
+export default HomePage;
+//module.exports = { HomePage };
