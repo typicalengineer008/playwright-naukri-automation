@@ -8,13 +8,12 @@ class LoginPage {
         this.passwordInput = 'input[type="password"]';
         this.submitBtn = 'button[type="submit"]';
     }
-
-    async goto() {
-     await this.page.goto('https://www.naukri.com/', {
+async goto(url) {
+    await this.page.goto(url, {
         waitUntil: 'domcontentloaded',
         timeout: 60000
     });
-    }
+}
 
     async login(email, password) {
 
@@ -28,5 +27,5 @@ class LoginPage {
     }
 }
 
-//module.exports = { LoginPage };
+
 export default LoginPage;

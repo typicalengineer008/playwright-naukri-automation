@@ -1,5 +1,6 @@
-class HomePage {
+//import { testData } from '../data/testData';
 
+class HomePage {
     constructor(page) {
 
         this.page = page;
