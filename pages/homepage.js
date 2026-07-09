@@ -21,6 +21,7 @@ class HomePage {
 
         this.searchicon =
             'button[tabindex="0"]';
+        this.viewProfilelink =this.page.getByRole('link', { name: 'View profile' });
     }
 
     async searchJob(jobname, locationname) {
@@ -43,6 +44,11 @@ class HomePage {
 
         await this.page.click(this.searchicon);
     }
+    async viewProfile() {
+        await this.viewProfilelink.click();
+    }
 }
 export default HomePage;
 //module.exports = { HomePage };
+
+

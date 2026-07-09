@@ -1,164 +1,192 @@
-# Playwright Naukri Automation
+# 🚀 Naukri Job Search Automation using Playwright
 
-Automation framework built using Playwright and JavaScript.
+A Playwright automation framework built using the **Page Object Model (POM)** and **Custom Fixtures**. This project automates the Naukri website by logging in, searching jobs, extracting job details, exporting them to a CSV file, and uploading a resume.
 
-## Features
-- Login Automation
-- Page Object Model (POM)
-- Environment Variable Support
-- Playwright Test Framework
+---
 
-## Tech Stack
+## 📌 Features
+
+- 🔐 Login to Naukri using credentials stored in `.env`
+- 🔍 Search jobs based on designation, location, and experience
+- 📄 Extract job details:
+  - Job Title
+  - Company Name
+  - Experience
+  - Location
+- 📊 Export job details to CSV
+- 👤 Navigate to the profile page
+- 📤 Upload resume automatically
+- 🏗️ Page Object Model (POM)
+- 🧩 Custom Playwright Fixtures
+- ⚙️ Environment Configuration using `dotenv`
+- 📁 External Test Data Management
+
+---
+
+## 🛠️ Tech Stack
+
 - Playwright
-- JavaScript
+- JavaScript (ES6)
 - Node.js
+- dotenv
+- csv-writer
 
-📌 Project Objective
+---
 
-Build a real-world Playwright automation framework that:
+## 📂 Project Structure
 
-Logs into Naukri
-Searches jobs
-Extracts job information
-Exports data into CSV
-Supports multiple job searches
-Demonstrates Playwright + POM + JavaScript skills
-📅 Day Wise Progress
-Day 1 – Framework Setup & Login Automation
-Tasks Completed
-Created Playwright project
-Installed Playwright
-Installed dotenv
-Created folder structure
-Configured .env
-Configured .gitignore
-Implemented Login Page Object Model
-Automated Naukri Login
-Added GitHub repository
-Concepts Learned
-Node.js project initialization
-npm vs npx
-Environment Variables
-Playwright Test Runner
-Page Object Model (POM)
-Git & GitHub basics
-Files Created
-pages/login.js
-tests/login.spec.js
-.env
-.gitignore
-README.md
-Day 2 – Search Job Automation
-Tasks Completed
-Created HomePage POM
-Added job search functionality
-Added experience selection
-Added location selection
-Implemented search method
-Created JobSearch test
-Concepts Learned
-Multi-page POM
-Locators
-Reusable methods
-Assertions
-Search workflows
-Files Created
-pages/homepage.js
-tests/JobSearch.spec.js
-Day 3 – Data Extraction
-Tasks Completed
-Created JobPage POM
-Captured Job Titles
-Captured Company Names
-Captured Experience
-Captured Locations
-Printed extracted data
-Concepts Learned
-Multiple element locators
-allTextContents()
-Arrays
-Collection handling
-Dynamic data extraction
-Files Created
-pages/jobpage.js
-Sample Output
-Software Development Engineer in Test (SDET)
-Amagi Media Labs
-3-4 Yrs
-Bengaluru
-Day 4 – CSV Export
-Tasks Completed
-Installed csv-writer package
-Created CSV utility
-Converted arrays into objects
-Exported jobs into CSV
-Generated report file
-Concepts Learned
-Objects
-Loops
-Data transformation
-CSV generation
-Utility classes
-Files Created
-utils/csvWriter.js
-
-data/jobs.csv
-Sample CSV
-TITLE,COMPANY,EXPERIENCE,LOCATION
-SDET,Amagi Media Labs,3-4 Yrs,Bengaluru
-QA Engineer,Cashfree Payments,3-6 Yrs,Bengaluru
-Day 5 – Multiple Search Keywords (Planned)
-Tasks
-Search multiple job roles
-Loop through search keywords
-Aggregate job data
-Export consolidated CSV
-Add search keyword column
-Example
-const searchKeywords = [
-    "SDET",
-    "Playwright",
-    "QA Automation"
-];
-Concepts
-Data-driven testing
-Loops
-Aggregation
-Dynamic automation
-🏗️ Framework Structure
-playwright-naukri-automation/
+```text
+Naukri-Automation/
+│
+├── config/
+│   └── env.js
+│
+├── data/
+│   ├── jobs.csv
+│   └── testData.js
+│
+├── fixtures/
+│   └── baseFixture.js
 │
 ├── pages/
-│   ├── login.js
-│   ├── homepage.js
-│   └── jobpage.js
+│   ├── LoginPage.js
+│   ├── HomePage.js
+│   ├── JobPage.js
+│   └── ProfilePage.js
 │
 ├── tests/
-│   ├── login.spec.js
-│   └── JobSearch.spec.js
+│   ├── JobSearch.spec.js
+│   └── ResumeUpdate.spec.js
 │
 ├── utils/
 │   └── csvWriter.js
 │
-├── data/
-│   └── jobs.csv
-│
 ├── .env
-├── .gitignore
+├── playwright.config.js
 ├── package.json
 └── README.md
-🛠️ Tech Stack
-Playwright
-JavaScript
-Node.js
-CSV Writer
-Git
-GitHub
-🎯 Key Features
-Login Automation
-Search Automation
-Dynamic Data Extraction
-CSV Reporting
-Page Object Model (POM)
-Environment Variable Support
-Reusable Framework Design
+```
+
+---
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/naukri-automation.git
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Install Playwright browsers:
+
+```bash
+npx playwright install
+```
+
+---
+
+## 🔑 Environment Variables
+
+Create a `.env` file in the project root.
+
+```env
+EMAIL=your_email@example.com
+PASSWORD=your_password
+BASE_URL=https://www.naukri.com/
+```
+
+---
+
+## ▶️ Run Tests
+
+Run all tests:
+
+```bash
+npx playwright test
+```
+
+Run in headed mode:
+
+```bash
+npx playwright test --headed
+```
+
+Run a specific test:
+
+```bash
+npx playwright test tests/JobSearch.spec.js
+```
+
+Generate and view the HTML report:
+
+```bash
+npx playwright show-report
+```
+
+---
+
+## 📊 Sample CSV Output
+
+| Job Title | Company | Experience | Location |
+|-----------|---------|------------|----------|
+| SDET | Clifyx Technology | 1-4 Years | Bengaluru |
+| Test Analyst | Hexaware | 2-4 Years | Bengaluru |
+
+---
+
+## 🏗️ Framework Design
+
+This framework follows the **Page Object Model (POM)**.
+
+- **Pages** contain locators and reusable page methods.
+- **Fixtures** create reusable page object instances.
+- **Tests** contain only business scenarios.
+- **Config** manages environment variables.
+- **Data** stores test data.
+- **Utils** contains reusable helper methods.
+
+---
+
+## 🎯 Implemented Scenarios
+
+- ✅ Login to Naukri
+- ✅ Search jobs
+- ✅ Apply search filters
+- ✅ Fetch job details
+- ✅ Export jobs to CSV
+- ✅ View Profile
+- ✅ Upload Resume
+
+---
+
+## 🚧 Upcoming Enhancements
+
+- Playwright Hooks (`beforeEach`, `afterEach`)
+- Advanced Playwright Locators
+- Assertions & Auto Waiting
+- API Testing
+- Data-Driven Testing using JSON & Excel
+- GitHub Actions CI/CD
+- Cross Browser Execution
+- Docker Integration
+
+---
+
+## 👨‍💻 Author
+
+**Bishnu Prasad Rayaguru**
+
+- GitHub: https://github.com/typicalengineer008
+- LinkedIn: https://linkedin.com/in/bishnu-prasad-rayaguru
+
+---
+
+## ⭐ If you found this project useful
+
+Give the repository a ⭐ on GitHub.
