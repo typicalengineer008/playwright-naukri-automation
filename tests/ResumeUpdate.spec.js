@@ -4,7 +4,7 @@ import { test, expect } from '../fixtures/baseFixture';
 import { config } from '../config/env';
 import { testData } from '../test-data/JobSearchData';
 //import HomePage from '../pages/HomePage';
-test('Document upload', async ({ loginPage, homePage, jobPage, page,profilePage }) => {
+test('resume document upload', async ({ loginPage, homePage, jobPage, page,profilePage }) => {
 await loginPage.goto(config.baseURL);
 
 await loginPage.login(

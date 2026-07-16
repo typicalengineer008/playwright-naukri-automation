@@ -5,7 +5,7 @@ class HomePage {
 
         this.page = page;
 
-        this.searchbox = '//span[text()="Search jobs here"]';
+        this.searchbox = this.page.getByRole('button', { name: 'Search jobs here' });
 
         this.searchinputDesignation =
             'input[placeholder="Enter keyword / designation / companies"]';
@@ -26,7 +26,7 @@ class HomePage {
 
     async searchJob(jobname, locationname) {
 
-        await this.page.click(this.searchbox);
+        await this.searchbox.click();
 
         await this.page.fill(
             this.searchinputDesignation,
