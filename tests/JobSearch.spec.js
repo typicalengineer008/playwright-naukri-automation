@@ -17,7 +17,7 @@ test.beforeEach(async ({ loginPage, page }) => {
 
 });
 test('Search Job', async ({ loginPage, homePage, jobPage, page }) => {
-await loginPage.goto(config.baseURL);
+//await loginPage.goto(config.baseURL);
 
 // await loginPage.login(
 //     config.email,
@@ -57,4 +57,11 @@ test('Document upload', async ({ loginPage, homePage, jobPage, page,profilePage 
     await profilePage.uploadDocument('test-data/Bishnu_Rayaguru_SDET_QA_Automation.pdf')
     
 })
+
+test.afterEach(async ({ page }, testInfo) => {
+
+    console.log(`Test Name : ${testInfo.title}`);
+    console.log(`Status    : ${testInfo.status}`);
+
+});
 
