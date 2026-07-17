@@ -7,17 +7,16 @@ class HomePage {
 
         this.searchbox = this.page.getByRole('button', { name: 'Search jobs here' });
 
-        this.searchinputDesignation =
-            'input[placeholder="Enter keyword / designation / companies"]';
+        this.searchinputDesignation =this.page.getByPlaceholder("Enter keyword / designation / companies");
 
-        this.experience =
-            'input[placeholder="Select experience"]';
+      
 
-        this.yearOfExperience =
-           '//span[text()="3 years"]';
+        this.experience =this.page.getByPlaceholder("Select experience");
+       this.yearOfExperience =this.page.locator('div').filter({ hasText: /^3 years$/ });
+      
 
-        this.location =
-            'input[placeholder="Enter location"]';
+        this.location = this.page.getByPlaceholder("Enter location");
+          
 
         this.searchicon =
             'button[tabindex="0"]';
@@ -28,19 +27,14 @@ class HomePage {
 
         await this.searchbox.click();
 
-        await this.page.fill(
-            this.searchinputDesignation,
-            jobname
-        );
+        await this.searchinputDesignation.fill(jobname);
 
-        await this.page.click(this.experience);
+        //await this.page.click(this.experience);
+        await this.experience.click();
 
-        await this.page.click(this.yearOfExperience);
+        await this.yearOfExperience.click();
 
-        await this.page.fill(
-            this.location,
-            locationname
-        );
+        await this.location.fill(locationname);
 
         await this.page.click(this.searchicon);
     }

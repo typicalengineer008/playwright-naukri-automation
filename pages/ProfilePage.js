@@ -1,3 +1,4 @@
+import { expect } from '@playwright/test';
 class ProfilePage{
     constructor (page){
         this.page=page;
@@ -5,8 +6,15 @@ class ProfilePage{
     }
 
 
+async verifyResumeUploaded(fileName) {
+    await expect(
+        this.page.getByText(fileName)
+    ).toBeVisible();
+}
+
     async clickonResumeUpload(){
     await this.updateResumebtn.click();
+    
     }
 
   async uploadDocument(filePath){
@@ -18,7 +26,9 @@ class ProfilePage{
         
         // Wait for upload to complete
         await this.page.waitForTimeout(2000);
+        await expect(this.page.getByText("Bishnu_Rayaguru_SDET_QA_Automation.pdf")).toBeVisible();
     }
+
 
 }
   export default ProfilePage;
