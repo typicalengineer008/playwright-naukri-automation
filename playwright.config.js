@@ -15,6 +15,7 @@ module.exports = defineConfig({
     baseURL: 'https://www.naukri.com',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
+    headless:false,
   },
 
   projects: [

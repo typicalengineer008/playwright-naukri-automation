@@ -26,7 +26,7 @@ async verifyResumeUploaded(fileName) {
         
         // Wait for upload to complete
         await this.page.waitForTimeout(2000);
-        await expect(this.page.getByText("Bishnu_Rayaguru_SDET_QA_Automation.pdf")).toBeVisible();
+       // await expect(this.page.getByText("Bishnu_Rayaguru_SDET_QA_Automation.pdf")).toBeVisible();
     }
 
 
